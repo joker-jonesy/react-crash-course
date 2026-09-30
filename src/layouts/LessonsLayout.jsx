@@ -15,7 +15,7 @@ export default function LessonsLayout() {
             <li key={lesson.slug}>
               {/* Relative link: "jsx" inside /lessons becomes /lessons/jsx */}
               <NavLink to={lesson.slug}>
-                {i + 1}. {lesson.title}
+                {i}. {lesson.title}
               </NavLink>
             </li>
           ))}

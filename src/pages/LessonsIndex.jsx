@@ -7,7 +7,7 @@ export default function LessonsIndex() {
     <>
       <h1>Lessons</h1>
       <p>Work through them in order — each one builds on the last.</p>
-      <ol>
+      <ol start={0}>
         {lessons.map((lesson) => (
           <li key={lesson.slug}>
             <Link to={lesson.slug}>{lesson.title}</Link>{' '}

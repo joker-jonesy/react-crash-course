@@ -18,14 +18,14 @@ export default function Home() {
           <li>Open a lesson in the browser <em>and</em> its source file in your editor side by side.</li>
           <li>Read the comments, play with the live demo, then do the exercises.</li>
         </ol>
-        <Link to="/lessons/jsx"><button className="primary">Start Lesson 1 →</button></Link>
+        <Link to="/lessons/setup"><button className="primary">Start with Lesson 0: Setup →</button></Link>
       </div>
 
       <h2>What's inside</h2>
       <div className="grid">
         {lessons.map((lesson, i) => (
           <Link key={lesson.slug} to={`/lessons/${lesson.slug}`} className="card" style={{ textDecoration: 'none' }}>
-            <span className="muted">Lesson {i + 1}</span>
+            <span className="muted">Lesson {i}</span>
             <div><strong>{lesson.title}</strong></div>
           </Link>
         ))}

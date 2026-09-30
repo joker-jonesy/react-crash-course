@@ -28,33 +28,117 @@ Open the URL Vite prints (usually http://localhost:5173).
 
 ---
 
-## 🛠 How this project was created (do it yourself!)
+## 🛠 Setting up a React project with Vite (from scratch)
+
+> **What is Vite?** A build tool and dev server. While you code, it serves your files to the browser, turns JSX into plain JavaScript, and updates the page the moment you save (HMR, Hot Module Replacement). `npm run build` bundles and optimizes everything for production.
+>
+> This section is also **Lesson 0** in the app ([`src/lessons/00-Setup.jsx`](src/lessons/00-Setup.jsx)), with a command builder for different project names and package managers.
+
+### 1. Install Node.js
+
+Get the **LTS** version from [nodejs.org](https://nodejs.org). Vite needs Node 20.19+ or 22.12+.
 
 ```bash
-# 1. Scaffold a React project with Vite
-npm create vite@latest my-app -- --template react
-cd my-app
+node -v
+```
+
+### 2. Create the project
+
+```bash
+npm create vite@latest my-react-app -- --template react
+```
+
+Without `--template react`, Vite asks you questions instead: choose **React**, then **JavaScript**. (The extra `--` passes the flag through npm to Vite.)
+
+### 3. Install dependencies and start the dev server
+
+```bash
+cd my-react-app
 npm install
-
-# 2. Add React Router
-npm install react-router
-
-# 3. Run it
 npm run dev
 ```
 
-Then wrap your app in `<BrowserRouter>` (see [`src/main.jsx`](src/main.jsx)) and define routes (see [`src/App.jsx`](src/App.jsx)).
+Open http://localhost:5173, edit `src/App.jsx`, and save. The page updates instantly. Stop the server with `Ctrl + C`.
 
-> **What is Vite?** A build tool and dev server. It serves your files to the browser during development, turns JSX into plain JavaScript, and bundles everything for production with `npm run build`.
+### 4. Know what you got
+
+| File / folder     | Purpose                                                                  |
+| ----------------- | ------------------------------------------------------------------------ |
+| `index.html`      | The only HTML page. React mounts into `<div id="root">`.                  |
+| `src/main.jsx`    | Entry point: `createRoot(...).render(<App />)`.                          |
+| `src/App.jsx`     | Your top-level component. Start editing here.                            |
+| `src/*.css`       | Starter styles, safe to delete or replace.                               |
+| `src/assets/`     | Images you `import` in code.                                             |
+| `public/`         | Files served as-is (e.g. `/favicon.svg`).                                |
+| `vite.config.js`  | Vite settings. The React plugin enables JSX and Fast Refresh.            |
+| `package.json`    | Dependencies and scripts (`dev`, `build`, `preview`, `lint`).            |
+| `node_modules/`   | Installed packages. Never edit or commit it.                              |
+
+```
+index.html → <script src="/src/main.jsx"> → createRoot(#root).render(<App />) → your components
+```
+
+### 5. Clean up the template
+
+Replace `src/App.jsx` with:
+
+```jsx
+export default function App() {
+  return <h1>Hello React!</h1>
+}
+```
+
+Then delete `src/App.css` and any images in `src/assets/` you don't need.
+
+### 6. Add React Router
+
+```bash
+npm install react-router
+```
+
+Wrap the app in `<BrowserRouter>` in `src/main.jsx`:
+
+```jsx
+import { BrowserRouter } from 'react-router'
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </StrictMode>,
+)
+```
+
+Define pages in `src/App.jsx`:
+
+```jsx
+import { Routes, Route, Link } from 'react-router'
+
+export default function App() {
+  return (
+    <>
+      <nav><Link to="/">Home</Link> | <Link to="/about">About</Link></nav>
+      <Routes>
+        <Route path="/" element={<h1>Home</h1>} />
+        <Route path="/about" element={<h1>About</h1>} />
+      </Routes>
+    </>
+  )
+}
+```
+
+That's the whole setup this repo started from. See [`src/main.jsx`](src/main.jsx) and [`src/App.jsx`](src/App.jsx) for the full version, and Lesson 12 for routing in depth.
 
 ---
 
 ## 📚 Lessons
 
-Work through these in order. Each file has an explanation at the top, a live demo, and exercises at the bottom.
+Start with **Lesson 0** if you've never set up a React project, then work through the rest in order. Each file has an explanation at the top, a live demo, and exercises at the bottom.
 
 | #  | Topic                        | File                                                                 | Key ideas                                                  |
 | -- | ---------------------------- | -------------------------------------------------------------------- | ---------------------------------------------------------- |
+| 0  | Setting Up with Vite         | [`00-Setup.jsx`](src/lessons/00-Setup.jsx)                           | `npm create vite`, project files, npm scripts, adding React Router |
 | 1  | JSX                          | [`01-Jsx.jsx`](src/lessons/01-Jsx.jsx)                               | `{expressions}`, `className`, fragments, inline styles     |
 | 2  | Components & Props           | [`02-ComponentsProps.jsx`](src/lessons/02-ComponentsProps.jsx)       | Reusable components, props, default values, `children`     |
 | 3  | State                        | [`03-State.jsx`](src/lessons/03-State.jsx)                           | `useState`, re-rendering, updating objects and arrays without mutating them |
@@ -87,7 +171,7 @@ react-crash-course/
     ├── pages/               ← one component per URL
     │   ├── Home.jsx, About.jsx, NotFound.jsx, LessonsIndex.jsx
     │   └── students/        ← routing demo: list + :studentId detail page
-    ├── lessons/             ← 📚 the 12 lessons
+    ├── lessons/             ← 📚 the lessons (00-Setup … 12-Routing)
     ├── components/          ← reusable UI pieces (Lesson wrapper, ThemeToggle)
     ├── context/             ← ThemeContext (app-wide dark/light mode)
     ├── hooks/               ← custom hooks (useLocalStorage)

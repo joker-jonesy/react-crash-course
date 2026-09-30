@@ -13,7 +13,7 @@ export default function Lesson({ slug, children }) {
 
   return (
     <section>
-      <p className="lesson-meta">Lesson {index + 1} of {lessons.length}</p>
+      <p className="lesson-meta">Lesson {index} of {lessons.length - 1}</p>
       <h1>{lesson.title}</h1>
       <p className="file-path">📄 Source: {lesson.file}</p>
 

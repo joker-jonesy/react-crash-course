@@ -24,6 +24,7 @@ import LessonsIndex from './pages/LessonsIndex.jsx'
 import StudentsList from './pages/students/StudentsList.jsx'
 import StudentDetail from './pages/students/StudentDetail.jsx'
 
+import SetupLesson from './lessons/00-Setup.jsx'
 import JsxLesson from './lessons/01-Jsx.jsx'
 import ComponentsPropsLesson from './lessons/02-ComponentsProps.jsx'
 import StateLesson from './lessons/03-State.jsx'
@@ -49,6 +50,7 @@ export default function App() {
         {/* Nested routes: /lessons/* all share the LessonsLayout sidebar */}
         <Route path="lessons" element={<LessonsLayout />}>
           <Route index element={<LessonsIndex />} />
+          <Route path="setup" element={<SetupLesson />} />
           <Route path="jsx" element={<JsxLesson />} />
           <Route path="components-props" element={<ComponentsPropsLesson />} />
           <Route path="state" element={<StateLesson />} />

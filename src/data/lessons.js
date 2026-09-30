@@ -1,6 +1,9 @@
-// Plain JavaScript data. Used by the sidebar, the lessons index page,
+// Plain JavaScript data. Lessons are numbered from 0 (setup), so a lesson's
+// number is its array index.
+// Used by the sidebar, the lessons index page,
 // and the Next/Previous buttons at the bottom of each lesson.
 export const lessons = [
+  { slug: 'setup', title: 'Setting Up with Vite', file: 'src/lessons/00-Setup.jsx' },
   { slug: 'jsx', title: 'JSX', file: 'src/lessons/01-Jsx.jsx' },
   { slug: 'components-props', title: 'Components & Props', file: 'src/lessons/02-ComponentsProps.jsx' },
   { slug: 'state', title: 'State (useState)', file: 'src/lessons/03-State.jsx' },
