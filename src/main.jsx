@@ -15,8 +15,10 @@ createRoot(document.getElementById('root')).render(
   // StrictMode: dev-only helper that double-runs some code to surface bugs.
   <StrictMode>
     {/* BrowserRouter keeps the UI in sync with the URL in the address bar.
-        Anything that uses routing (Link, Routes, useParams...) must be inside it. */}
-    <BrowserRouter>
+        Anything that uses routing (Link, Routes, useParams...) must be inside it.
+        basename = the sub-path the app is served from ("/" locally,
+        "/react-crash-course/" on GitHub Pages — set by `base` in vite.config.js). */}
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       {/* A Context provider — see Lesson 10. Everything inside can read the theme. */}
       <ThemeProvider>
         <App />

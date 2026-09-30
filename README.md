@@ -158,6 +158,22 @@ Once you've finished the lessons, build one of these from scratch with `npm crea
 
 ---
 
+## 🌐 Deploying to GitHub Pages
+
+This repo deploys itself: every push to `main` runs [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which builds the app and publishes it to GitHub Pages.
+
+Three things make a React Router app work on GitHub Pages (a good lesson in itself!):
+
+1. **`base` in [`vite.config.js`](vite.config.js)**: Pages serves the site from `/<repo-name>/`, not `/`, so the built asset URLs need that prefix.
+2. **`basename` on `<BrowserRouter>`** in [`src/main.jsx`](src/main.jsx): tells React Router to ignore that prefix when matching routes.
+3. **`404.html` fallback**: Pages has no idea `/students/3` is a React route and would return a 404. The workflow copies `index.html` to `404.html`, so any unknown path still loads the app and React Router takes over.
+
+**Using your own copy:** fork or copy the repo, change `/react-crash-course/` in `vite.config.js` to your repo's name, then under **Settings → Pages → Source** choose **GitHub Actions**.
+
+Run `npm run build && npm run preview` to test the production build locally at the same sub-path.
+
+---
+
 ## 🔗 Further reading
 
 - [react.dev/learn](https://react.dev/learn): the official React tutorial
