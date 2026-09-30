@@ -1,0 +1,93 @@
+/* Global styles. Kept deliberately simple so the focus stays on React. */
+:root {
+  --bg: #ffffff;
+  --surface: #f6f7f9;
+  --text: #1f2328;
+  --muted: #59636e;
+  --border: #d8dee4;
+  --accent: #087ea4; /* React blue */
+  --accent-bg: #e6f7ff;
+  --danger: #c62828;
+  --success: #2e7d32;
+  --radius: 8px;
+  --mono: ui-monospace, 'SF Mono', Consolas, monospace;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.55;
+  color: var(--text);
+  background: var(--bg);
+}
+
+/* Toggled by the ThemeContext demo (Lesson 10) */
+:root[data-theme='dark'] {
+  --bg: #16181d;
+  --surface: #23272f;
+  --text: #f6f7f9;
+  --muted: #99a1b3;
+  --border: #343a46;
+  --accent: #58c4dc;
+  --accent-bg: #1c3440;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); }
+a { color: var(--accent); }
+h1, h2, h3 { line-height: 1.2; }
+code { font-family: var(--mono); background: var(--surface); padding: 0.1em 0.35em; border-radius: 4px; font-size: 0.9em; }
+pre { font-family: var(--mono); background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; overflow-x: auto; font-size: 0.85rem; }
+pre code { background: none; padding: 0; }
+
+button {
+  font: inherit; cursor: pointer; padding: 0.4rem 0.9rem;
+  border: 1px solid var(--border); border-radius: var(--radius);
+  background: var(--surface); color: var(--text);
+}
+button:hover { border-color: var(--accent); }
+button.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+input, select, textarea {
+  font: inherit; padding: 0.4rem 0.6rem; border: 1px solid var(--border);
+  border-radius: var(--radius); background: var(--bg); color: var(--text);
+}
+
+/* ---------- Layout ---------- */
+.site-header {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  padding: 0.75rem 1.5rem; border-bottom: 1px solid var(--border); background: var(--surface);
+}
+.site-header .brand { font-weight: 700; text-decoration: none; color: var(--text); }
+.site-nav { display: flex; gap: 0.25rem; flex-wrap: wrap; }
+.site-nav a { text-decoration: none; color: var(--muted); padding: 0.35rem 0.75rem; border-radius: var(--radius); }
+/* NavLink automatically adds the "active" class to the link that matches the URL */
+.site-nav a.active { background: var(--accent-bg); color: var(--accent); font-weight: 600; }
+
+main { max-width: 1100px; margin: 0 auto; padding: 1.5rem; }
+
+.lessons-shell { display: grid; grid-template-columns: 240px 1fr; gap: 2rem; }
+.lesson-sidebar ol { list-style: none; padding: 0; margin: 0; position: sticky; top: 1rem; }
+.lesson-sidebar a { display: block; padding: 0.35rem 0.6rem; border-radius: var(--radius); text-decoration: none; color: var(--muted); font-size: 0.95rem; }
+.lesson-sidebar a.active { background: var(--accent-bg); color: var(--accent); font-weight: 600; }
+@media (max-width: 760px) {
+  .lessons-shell { grid-template-columns: 1fr; }
+  .lesson-sidebar ol { position: static; display: flex; flex-wrap: wrap; gap: 0.25rem; }
+}
+
+/* ---------- Lesson pieces ---------- */
+.lesson-meta { color: var(--muted); font-size: 0.9rem; margin-bottom: 0.25rem; }
+.file-path { font-family: var(--mono); font-size: 0.85rem; color: var(--muted); }
+.demo {
+  border: 2px dashed var(--accent); border-radius: var(--radius);
+  padding: 1rem 1.25rem; margin: 1rem 0; position: relative;
+}
+.demo::before {
+  content: 'Live demo'; position: absolute; top: -0.75rem; left: 1rem;
+  background: var(--bg); padding: 0 0.4rem; font-size: 0.75rem; font-weight: 700;
+  color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em;
+}
+.exercise { background: var(--accent-bg); border-radius: var(--radius); padding: 0.75rem 1.25rem; margin-top: 1.5rem; }
+.lesson-pager { display: flex; justify-content: space-between; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+.card { border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; background: var(--surface); }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+.row { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
+.stack { display: flex; flex-direction: column; gap: 0.5rem; }
+.muted { color: var(--muted); }
+.error { color: var(--danger); font-size: 0.9rem; }
+.success { color: var(--success); }
