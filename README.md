@@ -11,7 +11,7 @@ Every lesson is a real, heavily commented React component. Run the app, open a l
 **Prerequisites:** [Node.js](https://nodejs.org) 20.19+ (LTS recommended) and a code editor (VS Code, WebStorm, …).
 
 ```bash
-git clone <this-repo-url> react-crash-course
+git clone https://github.com/joker-jonesy/react-crash-course.git
 cd react-crash-course
 npm install
 npm run dev
