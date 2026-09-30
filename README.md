@@ -150,7 +150,7 @@ Start with **Lesson 0** if you've never set up a React project, then work throug
 | 9  | Lifting State Up             | [`09-LiftingState.jsx`](src/lessons/09-LiftingState.jsx)             | Sharing state between siblings                             |
 | 10 | Context                      | [`10-Context.jsx`](src/lessons/10-Context.jsx)                       | `createContext`, `useContext`, avoiding prop drilling      |
 | 11 | Custom Hooks                 | [`11-CustomHooks.jsx`](src/lessons/11-CustomHooks.jsx)               | Reusing stateful logic, `useLocalStorage`                  |
-| 12 | Routing                      | [`12-Routing.jsx`](src/lessons/12-Routing.jsx)                       | `Routes`, `Link`, `NavLink`, `useParams`, `useNavigate`    |
+| 12 | Routing                      | [`12-Routing.jsx`](src/lessons/12-Routing.jsx)                       | `Routes`, `Link`, `NavLink`, `useParams`, `useNavigate`, deploying to GitHub Pages |
 
 ---
 
@@ -243,6 +243,8 @@ Once you've finished the lessons, build one of these from scratch with `npm crea
 ---
 
 ## 🌐 Deploying to GitHub Pages
+
+> 📖 **Lesson 12, Part 2** ([`src/lessons/12-Routing.jsx`](src/lessons/12-Routing.jsx)) explains *why* routed apps 404 on GitHub Pages, with an interactive simulator, step-by-step deploy instructions for your own project, and a troubleshooting table.
 
 This repo deploys itself: every push to `main` runs [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which builds the app and publishes it to GitHub Pages.
 
