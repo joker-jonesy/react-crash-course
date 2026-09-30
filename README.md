@@ -166,7 +166,7 @@ Three things make a React Router app work on GitHub Pages (a good lesson in itse
 
 1. **`base` in [`vite.config.js`](vite.config.js)**: Pages serves the site from `/<repo-name>/`, not `/`, so the built asset URLs need that prefix.
 2. **`basename` on `<BrowserRouter>`** in [`src/main.jsx`](src/main.jsx): tells React Router to ignore that prefix when matching routes.
-3. **`404.html` fallback**: Pages has no idea `/students/3` is a React route and would return a 404. The workflow copies `index.html` to `404.html`, so any unknown path still loads the app and React Router takes over.
+3. **One HTML file per route** ([`scripts/spa-fallback.js`](scripts/spa-fallback.js), run by `npm run build`): Pages only serves real files, so `/students/3` would be a 404. The script copies `index.html` to `students/3.html`, `lessons/jsx.html`, and so on. Pages serves those with a normal 200 status, the app loads, and React Router takes over. It also writes `404.html`, so unknown URLs still show the app's NotFound page with a correct 404 status. **Added a page? Add its path to the list in that script.**
 
 **Using your own copy:** fork or copy the repo, change `/react-crash-course/` in `vite.config.js` to your repo's name, then under **Settings → Pages → Source** choose **GitHub Actions**.
 
